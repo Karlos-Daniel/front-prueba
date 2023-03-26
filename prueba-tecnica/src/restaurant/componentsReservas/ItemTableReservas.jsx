@@ -1,17 +1,15 @@
 import React from "react";
 
-export const ItemTableRestaurant = ({ restaurant }) =>
-  restaurant &&
-  restaurant.map((res) => {
+export const ItemTableReservas = ({ reservas }) =>
+reservas &&
+  reservas.map((res) => {
     return (
       <tr key={res.uid} >
-        <td>{res.nombreRestaurante}</td>
-        <td>{res.descripcion}</td>
-        <td>{res.direccion}</td>
-        <td>{res.ciudad}</td>
-        <td>
-          <img src={res.imgRestaurante} className="w-25 " alt="" />
-        </td>
+        <td>{res.nombreReserva}</td>
+        <td>{res.mesa}</td>
+        <td>{res.fecha}</td>
+        <td>{res.restaurante.nombreRestaurante}</td>
+        
         <td>
           <div className="d-flex gap-4" style={{
             alignItems: "center",

@@ -8,6 +8,8 @@ export const Layout = () => {
         |<Link to='/create'>Crear restaurante</Link>|
         <Link to='/'>Lista de restaurantes</Link>|
         <Link to='reserve'>Reservar de restaurante</Link>|
+        <Link to='reservas'>Listar Reservas</Link>|
+
       </div>
       <Outlet />
     </div>

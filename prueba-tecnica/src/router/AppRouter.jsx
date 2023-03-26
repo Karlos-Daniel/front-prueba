@@ -5,6 +5,7 @@ import {
   RestaurantList,
   RestaurantReserve,
   RestaurantCreate,
+  Reservas
 } from '../restaurant';
 import { Login } from '../usuario';
 
@@ -15,8 +16,10 @@ export const AppRouter = () => {
         {/*<Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>*/}
         <Route path='/' element={<RestaurantList />} />
+
         <Route path='/create' element={<RestaurantCreate />} />
         <Route path='/reserve' element={<RestaurantReserve />} />
+        <Route path='/reservas' element={<Reservas />} />
 
         <Route path='*' element={<RestaurantList />} />
       </Route>

@@ -8,7 +8,7 @@ export const List = ({value=[]}) => {
         className="form-select" aria-label="Default select example">
             {
                 value.map(e=>{
-                    return <option key={e} value="1">{e}</option>
+                    return <option key={e} value={e}>{e}</option>
                 })
             }
     </select>
