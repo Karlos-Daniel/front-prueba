@@ -35,18 +35,16 @@ export const RestaurantList = ({restaruantes}) => {
             <th scope="col">Direccion</th>
             <th scope="col">ciudad</th>
             <th scope="col">Imagen</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="d-flex-col ">
 
           {
             <ItemTableRestaurant
             restaurant={restaurant}
             />
           }
-
-
-          
         </tbody>
       </table>
     </div>
