@@ -1,4 +1,8 @@
+import { useEffect } from "react";
+
 export const RestaurantCreate = () => {
+  
+  
   return (
     <div>
       <h2>Crear restaurante</h2>

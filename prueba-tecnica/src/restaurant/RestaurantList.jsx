@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { ItemTableRestaurant } from "./componentsRestaurante/ItemTableRestaurant";
 
 export const RestaurantList = ({restaruantes}) => {
+  
+
   const [restaurantes, setRestaurantes] = useState([])
 
   useEffect(() => {
