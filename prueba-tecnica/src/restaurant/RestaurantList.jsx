@@ -1,29 +1,27 @@
 
 
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { ItemTableRestaurant } from "./componentsRestaurante/ItemTableRestaurant";
 
 export const RestaurantList = ({restaruantes}) => {
+  const [restaurantes, setRestaurantes] = useState([])
 
-  const restaurant =[
-    {
-			"nombreRestaurante": "nombreRestaurante PUT",
-			"descripcion": "descripcion PUT ",
-			"direccion": "direccion PUT22213",
-			"ciudad": "ciudad PUT22231",
-			"imgRestaurante": "https://res.cloudinary.com/djdxi88e0/image/upload/v1679703904/tvncwbquapr5s3fw4mx8.jpg",
-			"uid": "641a8e637e724e9f1b50f612"
-		},
-		{
-			"nombreRestaurante": "restaurante  3",
-			"descripcion": "restaurante descripcion",
-			"direccion": "restaurante direccion",
-			"ciudad": "restaurante ciudad",
-			"imgRestaurante": "https://res.cloudinary.com/djdxi88e0/image/upload/v1679703321/ifbxzozxpqkzon1y5d16.jpg",
-			"uid": "641e3d1859aacff696b74ddc"
-		},
-  ]
+  useEffect(() => {
+    
+    axios.get(`${import.meta.env.VITE_APP_BASEURL}/restaurantes`,{
+      headers:{token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDFjYTJjOGQ0NDA2MjQ4MDJkNDA4NjkiLCJpYXQiOjE2Nzk4NjkzNjIsImV4cCI6MTY3OTk1NTc2Mn0.iWi6536wu7hjLYsOvh8Kw6xik9X6r_RbZxfkK5X0VWM'}
+    }).then((response)=>{
+      console.log(response.data.data);
+      setRestaurantes(response.data.data);
+    })
+  
+    
+  }, [])
+  
 
 
+//console.log(restaruantes);
   return <>
 
     <div className="table-responsive">
@@ -40,9 +38,9 @@ export const RestaurantList = ({restaruantes}) => {
         </thead>
         <tbody className="d-flex-col ">
 
-          {
+           {
             <ItemTableRestaurant
-            restaurant={restaurant}
+            restaurant={restaurantes}
             />
           }
         </tbody>

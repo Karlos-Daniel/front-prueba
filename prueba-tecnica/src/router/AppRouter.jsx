@@ -7,14 +7,16 @@ import {
   RestaurantCreate,
   Reservas
 } from '../restaurant';
-import { Login } from '../usuario';
+
+
+import {Login} from '../restaurant/componentsLogin/Login'
 
 export const AppRouter = () => {
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
-        {/*<Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>*/}
+        {<Route path='/login' element={<Login/>}/>}
+        {/* {<Route path='/register' element={<Register/>}/>} */}
         <Route path='/' element={<RestaurantList />} />
 
         <Route path='/create' element={<RestaurantCreate />} />
