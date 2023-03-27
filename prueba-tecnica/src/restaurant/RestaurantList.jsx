@@ -3,23 +3,37 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ItemTableRestaurant } from "./componentsRestaurante/ItemTableRestaurant";
-
+import { enqueueSnackbar, closeSnackbar, useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
 export const RestaurantList = ({restaruantes}) => {
-  
+  const navigate = useNavigate();
 
   const [restaurantes, setRestaurantes] = useState([])
 
   useEffect(() => {
-    
+
     axios.get(`${import.meta.env.VITE_APP_BASEURL}/restaurantes`,{
-      headers:{token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDFjYTJjOGQ0NDA2MjQ4MDJkNDA4NjkiLCJpYXQiOjE2Nzk4NjkzNjIsImV4cCI6MTY3OTk1NTc2Mn0.iWi6536wu7hjLYsOvh8Kw6xik9X6r_RbZxfkK5X0VWM'}
+      headers:{token:localStorage.getItem('token')}
     }).then((response)=>{
-      console.log(response.data.data);
       setRestaurantes(response.data.data);
     })
-  
-    
-  }, [])
+
+  }, [restaurantes])
+
+  const handleDelete = (e,uid,nombre)=>{
+    e.preventDefault();
+    axios.delete(`${import.meta.env.VITE_APP_BASEURL}/restaurante/${uid}`,{
+      headers:{token:localStorage.getItem('token')}
+    }).then((response)=>{
+      enqueueSnackbar(`El restaurante "${nombre}" se borro con exito`,
+
+        {
+          variant: "success",
+          anchorOrigin: { vertical: "top", horizontal: "right" },
+        })
+        navigate("/restaurants", { replace: true });
+    })
+  }
   
 
 
@@ -42,6 +56,7 @@ export const RestaurantList = ({restaruantes}) => {
 
            {
             <ItemTableRestaurant
+            handleDelete={handleDelete}
             restaurant={restaurantes}
             />
           }

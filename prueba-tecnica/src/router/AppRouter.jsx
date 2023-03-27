@@ -12,6 +12,9 @@ import {
 import {Login} from '../restaurant/componentsLogin/Login'
 
 export const AppRouter = () => {
+
+  
+
   return (
     <Routes>
       <Route path='/' element={<Layout />}>

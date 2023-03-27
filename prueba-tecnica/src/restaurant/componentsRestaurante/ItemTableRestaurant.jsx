@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ItemTableRestaurant = ({ restaurant }) =>
+export const ItemTableRestaurant = ({ restaurant,handleDelete }) =>
   restaurant &&
   restaurant.map((res) => {
     return (
@@ -21,7 +21,7 @@ export const ItemTableRestaurant = ({ restaurant }) =>
             <button type="button" className="btn btn-primary">
               Editar
             </button>
-            <button type="button" className="btn btn-danger">
+            <button type="button" className="btn btn-danger" onClick={(e)=>handleDelete(e,res.uid,res.nombreRestaurante)} >
               Eliminar
             </button>
           </div>
