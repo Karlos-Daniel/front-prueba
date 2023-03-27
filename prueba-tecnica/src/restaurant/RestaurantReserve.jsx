@@ -1,11 +1,24 @@
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import {ListRestaurantes } from "./componentsRestaurante/ListRestaurantes";
 import { List } from "./componentsRestaurante/List";
 
+
 export const RestaurantReserve = () => {
-  
- 
   const mesas = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-  const restaurantes = ['res 1', 'res 2']
+
+  const [restaurantes, setRestaurantes] = useState([])
+
+  useEffect(() => {
+    
+    axios.get(`${import.meta.env.VITE_APP_BASEURL}/restaurantes`,{
+      headers:{token:localStorage.getItem('token')}
+    }).then((response)=>{
+      
+      setRestaurantes(response.data.data);
+    })
+
+  }, [])
   return (
     <div>
       <h2>Reservar restaurante</h2>
@@ -23,7 +36,8 @@ export const RestaurantReserve = () => {
         />
 
         <input name='fecha' type="date"placeholder='fecha' />
-        <List
+
+        <ListRestaurantes
           value={restaurantes}
         
         />

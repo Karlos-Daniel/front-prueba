@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import {  useUserStore } from "../store/userStore";
 import axios from "axios";
 export const Login = () => {
+
+  const navigate = useNavigate()
+  const useUser= useUserStore(state=>state.token)
+  const setToken = useUserStore(state=>state.setToken)
+
+
+
   const [inputData, setInputData] = useState({
     correo: "",
     password: "",
@@ -11,8 +20,8 @@ export const Login = () => {
     axios
       .post(`${import.meta.env.VITE_APP_BASEURL}/login`, inputData)
       .then((e) => {
-        console.log(e.data.token);
-        localStorage.setItem("token",e.data.token);
+        setToken(e.data.token)
+        navigate('/reserves',{replace:true})
       });
   };
 

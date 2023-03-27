@@ -1,7 +1,8 @@
 import React from "react";
+import  axios  from 'axios';
+export const ItemTableReservas = ({ reservas,handleDelete }) =>{
 
-export const ItemTableReservas = ({ reservas }) =>
-reservas &&
+return (reservas &&
   reservas.map((res) => {
     return (
       <tr key={res.uid} >
@@ -19,11 +20,12 @@ reservas &&
             <button type="button" className="btn btn-primary">
               Editar
             </button>
-            <button type="button" className="btn btn-danger">
+            <button type="button" className="btn btn-danger" onClick={(e)=>handleDelete(e,res.uid)}>
               Eliminar
             </button>
           </div>
         </td>
       </tr>
     );
-  });
+  }));
+}

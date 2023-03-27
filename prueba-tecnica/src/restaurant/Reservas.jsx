@@ -1,25 +1,35 @@
 import  axios  from 'axios';
 import React, { useEffect, useState } from 'react'
 import { ItemTableReservas} from "./componentsReservas/ItemTableReservas";
-
+import {  useUserStore } from "./store/userStore";
 
 export const Reservas = () => {
-
-
-
+  
   const [reservas, setReservas] = useState([])
-
-  useEffect(() => {
+  const getReservas = ()=>{
     
     axios.get(`${import.meta.env.VITE_APP_BASEURL}/reservas`,{
       headers:{token:localStorage.getItem('token')}
     }).then((response)=>{
-      console.log(response.data.data);
-      setReservas(response.data.data);
+      setReservas(response.data);
     })
-  
     
+  }
+  
+  useEffect(() => {
+    getReservas()
   }, [])
+  
+  const handleDelete = (e,uid)=>{
+    e.preventDefault();
+    axios.delete(`${import.meta.env.VITE_APP_BASEURL}/reservas/${uid}`,{
+      headers:{token:localStorage.getItem('token')}
+    }).then((response)=>{
+      getReservas()
+    })
+  }
+
+  
 
   return (
     <>
@@ -40,9 +50,11 @@ export const Reservas = () => {
 
            {
             <ItemTableReservas
+            handleDelete={handleDelete}
             reservas={reservas}
             />
           }
+
         </tbody>
       </table>
     </div>
