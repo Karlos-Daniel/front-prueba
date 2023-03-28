@@ -6,7 +6,8 @@ import {
   RestaurantReserve,
   RestaurantCreate,
   Reservas,
-  EditRestaurantes
+  EditRestaurantes,
+  EditReservas
 } from '../restaurant';
 
 
@@ -24,10 +25,10 @@ export const AppRouter = () => {
         <Route path='/restaurants' element={<RestaurantList />} />
 
         <Route path='/createrestaurant' element={<RestaurantCreate />} />
-      
         <Route path='/editrestaurant' element={<EditRestaurantes />} />
 
         <Route path='/createreserve' element={<RestaurantReserve />} />
+        <Route path='/editreserve' element={<EditReservas />} />
         <Route path='/reserves' element={<Reservas />} />
 
         <Route path='/*' element={<RestaurantList />} />

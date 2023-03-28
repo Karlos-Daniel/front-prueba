@@ -15,6 +15,8 @@ export const Reservas = () => {
     })
     
   }
+
+  console.log(reservas);
   
   useEffect(() => {
     getReservas()
