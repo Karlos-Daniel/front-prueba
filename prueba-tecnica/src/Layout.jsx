@@ -40,6 +40,7 @@ export const Layout = () => {
       <Link to='/' hidden={!validation}>Login</Link>
         <Link to='/createrestaurant' hidden={validation}>Crear restaurante</Link>
         <Link to='/restaurants' hidden={validation}>Lista de restaurantes</Link>
+        
         <Link to='/createreserve'hidden={validation}>Reservar de restaurante</Link>
         <Link to='/reserves' hidden={validation}>Listar Reservas</Link>
       </div>

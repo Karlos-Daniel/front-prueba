@@ -1,8 +1,20 @@
-import React from 'react'
-import { List } from './componentsRestaurante/List'
-import { ListRestaurantes } from './componentsRestaurante/ListRestaurantes'
+import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
-export const EditRestaurantes = ({data}) => {
+
+export const EditRestaurantes = () => {
+
+    const location = useLocation();
+
+    const [input, setInputData] = useState({
+        nombreRestaurante:location.state.nombreRestaurante,
+        descripcion:location.state.descripcion,
+        direccion:location.state.direccion,
+        ciudad:location.state.ciudad,
+        archivo:undefined
+    })
+
+
   return (
     <>
 
@@ -16,10 +28,10 @@ export const EditRestaurantes = ({data}) => {
       >
         <input
           name="nombreRestaurante"
-          value={inputData.nombreRestaurante}
+          value={input.nombreRestaurante}
           onChange={(e) =>
             setInputData({
-              ...inputData,
+              ...input,
               [e.target.name]: e.target.value,
             })
           }
@@ -31,10 +43,10 @@ export const EditRestaurantes = ({data}) => {
           name="descripcion"
           placeholder="Descripción"
           type="text"
-          value={inputData.descripcion}
+          value={input.descripcion}
           onChange={(e) =>
             setInputData({
-              ...inputData,
+              ...input,
               [e.target.name]: e.target.value,
             })
           }
@@ -44,10 +56,10 @@ export const EditRestaurantes = ({data}) => {
           name="direccion"
           placeholder="Dirección"
           type="text"
-          value={inputData.direccion}
+          value={input.direccion}
           onChange={(e) =>
             setInputData({
-              ...inputData,
+              ...input,
               [e.target.name]: e.target.value,
             })
           }
@@ -57,10 +69,10 @@ export const EditRestaurantes = ({data}) => {
           name="ciudad"
           placeholder="Ciudad"
           type="text"
-          value={inputData.ciudad}
+          value={input.ciudad}
           onChange={(e) =>
             setInputData({
-              ...inputData,
+              ...input,
               [e.target.name]: e.target.value,
             })
           }
@@ -71,13 +83,13 @@ export const EditRestaurantes = ({data}) => {
           type="file"
           onChange={(e) =>
             setInputData({
-              ...inputData,
+              ...input,
               [e.target.name]: e.target.files[0],
             })
           }
         />
 
-        <button onClick={handleSumbit}>Guardar</button>
+        <button >Guardar</button>
       </form>
     
     </>

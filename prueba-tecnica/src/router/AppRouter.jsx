@@ -24,10 +24,13 @@ export const AppRouter = () => {
         <Route path='/restaurants' element={<RestaurantList />} />
 
         <Route path='/createrestaurant' element={<RestaurantCreate />} />
+      
+        <Route path='/editrestaurant' element={<EditRestaurantes />} />
+
         <Route path='/createreserve' element={<RestaurantReserve />} />
         <Route path='/reserves' element={<Reservas />} />
 
-        <Route path='*' element={<RestaurantList />} />
+        <Route path='/*' element={<RestaurantList />} />
       </Route>
     </Routes>
   );

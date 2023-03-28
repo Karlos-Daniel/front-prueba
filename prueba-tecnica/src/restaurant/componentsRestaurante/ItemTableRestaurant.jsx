@@ -1,6 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+export const ItemTableRestaurant = ({ restaurant,handleDelete }) =>{
+  const navigate = useNavigate()
 
-export const ItemTableRestaurant = ({ restaurant,handleDelete }) =>
+  const goEdit =(uid,nombreRestaurante,descripcion,direccion,ciudad)=>{
+    navigate('/editrestaurant', {
+      state: {
+        uid,
+        nombreRestaurante,
+        descripcion,
+        direccion,
+        ciudad
+      }
+    });
+  }
+
+  return(
   restaurant &&
   restaurant.map((res) => {
     return (
@@ -18,7 +33,7 @@ export const ItemTableRestaurant = ({ restaurant,handleDelete }) =>
             justifyContent: "center",
             height: "auto",
           }}>
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary" onClick={(e)=>{goEdit(res.uid,res.nombreRestaurante,res.descripcion,res.direccion,res.ciudad)}}>
               Editar
             </button>
             <button type="button" className="btn btn-danger" onClick={(e)=>handleDelete(e,res.uid,res.nombreRestaurante)} >
@@ -28,4 +43,4 @@ export const ItemTableRestaurant = ({ restaurant,handleDelete }) =>
         </td>
       </tr>
     );
-  });
+  }));}
