@@ -5,7 +5,8 @@ import {
   RestaurantList,
   RestaurantReserve,
   RestaurantCreate,
-  Reservas
+  Reservas,
+  EditRestaurantes
 } from '../restaurant';
 
 

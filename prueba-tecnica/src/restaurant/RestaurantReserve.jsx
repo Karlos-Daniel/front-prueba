@@ -45,14 +45,9 @@ export const RestaurantReserve = () => {
     
   }, [restauranteId,mesa])
 
-  
-  
 
   const navigate = useNavigate()
   
-  
-
-
   const handleSumbit = (e) => {
     e.preventDefault();
     
